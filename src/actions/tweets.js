@@ -4,11 +4,11 @@ import {saveLikeToggle, saveTweet} from '../utils/api';
 
 export const RECEIVE_TWEETS = 'RECEIVE_TWEETS';
 export const TOGGLE_TWEET = 'TOGGLE_TWEET';
-export const SAVE_TWEET = 'SAVE_TWEET';
+export const ADD_TWEET = 'ADD_TWEET';
 
 function addTweet (tweet) {
     return {
-        type: SAVE_TWEET,
+        type: ADD_TWEET,
         tweet
     };
 }
