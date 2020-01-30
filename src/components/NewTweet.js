@@ -36,11 +36,11 @@ class NewTweet extends Component {
                 <h3 className='center'>Compose new Tweet</h3>
                 <form className='new-tweet' onSubmit={this.handleSubmit}>
                     <textarea
-                      placeholder="What's happening?"
-                      value={text}
-                      onChange={this.handleChange}
-                      className='textarea'
-                      maxLength={280}
+                        placeholder="What's happening?"
+                        value={text}
+                        onChange={this.handleChange}
+                        className='textarea'
+                        maxLength={280}
                     />
                     {tweetLeft <= 100 && (
                         <div className='tweet-length'>

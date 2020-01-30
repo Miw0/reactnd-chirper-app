@@ -1,7 +1,34 @@
-import {saveLikeToggle} from '../utils/api';
+import {showLoading, hideLoading} from 'react-redux-loading';
+
+import {saveLikeToggle, saveTweet} from '../utils/api';
 
 export const RECEIVE_TWEETS = 'RECEIVE_TWEETS';
 export const TOGGLE_TWEET = 'TOGGLE_TWEET';
+export const SAVE_TWEET = 'SAVE_TWEET';
+
+function addTweet (tweet) {
+    return {
+        type: SAVE_TWEET,
+        tweet
+    };
+}
+
+export function handleAddTweet (text, replyingTo) {
+    return (dispatch, getState) => {
+        const {authedUser} = getState();
+
+        dispatch(showLoading());
+
+        return saveTweet({
+            text,
+            author: authedUser,
+            replyingTo
+        }).then((tweet) => {
+            dispatch(addTweet(tweet));
+            dispatch(hideLoading());
+        });
+    };
+}
 
 export function recieveTweets (tweets) {
     return {
